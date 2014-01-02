@@ -1,0 +1,35 @@
+buildscript {
+    repositories {
+        mavenCentral()
+    }   
+
+    dependencies {
+        classpath 'com.android.tools.build:gradle:0.7.0'
+    }   
+}
+
+apply plugin: 'android-library'
+
+dependencies {
+    compile 'com.android.support:support-v4:13.0.0'
+    compile project(':modules/ActionBarSherlock')
+}
+
+android {
+    compileSdkVersion 19
+    buildToolsVersion "19.0.0"
+
+    defaultConfig {
+        minSdkVersion 7
+        targetSdkVersion 16
+    }
+
+    sourceSets {
+        main {
+            manifest.srcFile 'library/AndroidManifest.xml'
+            java.srcDirs = ['library/src']
+            resources.srcDirs = ['library/src']
+            res.srcDirs = ['library/res']
+        }
+    }
+}
